@@ -4,3 +4,9 @@ Max Range Percentage Day: Agg(open=16.92, high=16.98, low=15.73, close=15.79, vo
 Max Range Percentage: 7.946598855689764
 Weekly Change: 1.24%
 Final Price: 16.28
+Resistance Levels: [16.39, 17.05, 17.8, 18.46, 15.64, 14.98, 14.23]
+High Hits: 0, Points: []
+Low Hits: 0, Points: []
+Distance from Lower Resistance on Last Trade: 0.6600000000000001
+Distance Between High and Low Resistance Points: None
+Average Hourly Volume: 4420262.00

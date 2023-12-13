@@ -240,27 +240,31 @@ def fetch_weekly_data(api_key, stocks):
                     trading_days += 1
 
                     # Append the calculated information to the existing summary file
-                    with open(weekly_summary_filename, 'a') as f:
-                        f.write(f"Weekly Change: {weekly_change:.2f}%\n")
-                        f.write(f"Final Price: {final_price}\n")
+                    # with open(weekly_summary_filename, 'a') as f:
+                    #     f.write(f"Weekly Change: {weekly_change:.2f}%\n")
+                    #     f.write(f"Final Price: {final_price}\n")
                 else:
                     # Handle cases where open or close price is not available
                     # You can choose to log this information or take other appropriate actions
                     print(f"Missing data for {stock} on {start_date}")
                         # Calculate average hourly volume
-                    if trading_days > 0:
-                        average_hourly_volume = calculate_average_hourly_volume(total_volume, trading_days)
-                        # Append the average hourly volume to the existing summary file
-                        with open(weekly_summary_filename, 'a') as f:
-                            f.write(f"Average Hourly Volume: {average_hourly_volume:.2f}\n")
+                if trading_days > 0:
+                    average_hourly_volume = calculate_average_hourly_volume(total_volume, trading_days)
+                    # Append the average hourly volume to the existing summary file
+                    with open(weekly_summary_filename, 'a') as f:
+                        f.write(f"Average Hourly Volume: {average_hourly_volume:.2f}\n")
 
             # Move to the next week
             
             start_date = week_end_date + datetime.timedelta(days=1)
-# fetch_weekly_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)
+fetch_weekly_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)
 
 
 def calculate_pivot_points(data):
+    if not data:
+        # Handle the case where data is empty
+        return None, None, None, None, None, None, None
+
     high = max(item['high'] for item in data)
     low = min(item['low'] for item in data)
     close = data[-1]['close']
@@ -279,9 +283,15 @@ def calculate_pivot_points(data):
     return PP, R1, S1, R2, S2, R3, S3
 
 def count_resistance_points(data, resistance_levels, tolerance_percentage=0.5, time_frame_hours=70):
+    if not data:
+        # Handle the case where data is empty
+        # Return appropriate default values or handle this case as needed
+        return 0, 0, [], [], None, None
     high_resistance_hits = low_resistance_hits = 0
     high_resistance_points = []
     low_resistance_points = []
+
+    resistance_levels = [level for level in resistance_levels if level is not None]
 
     tolerance_values = [level * tolerance_percentage / 100 for level in resistance_levels]
 
@@ -408,4 +418,4 @@ def fetch_res_data(api_key, stocks):
 
     
 
-fetch_res_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)
+# fetch_res_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)

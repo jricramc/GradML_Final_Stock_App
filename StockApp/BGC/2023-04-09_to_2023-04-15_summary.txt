@@ -2,3 +2,8 @@ Max Variance Day: None
 Max Variance : -1
 Max Range Percentage Day: None
 Max Range Percentage: -1
+Resistance Levels: [None, None, None, None, None, None, None]
+High Hits: 0, Points: []
+Low Hits: 0, Points: []
+Distance from Lower Resistance on Last Trade: None
+Distance Between High and Low Resistance Points: None

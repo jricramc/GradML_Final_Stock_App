@@ -12,3 +12,19 @@ High Hits: 6, Points: [(0, 9.73), (49, 10.13), (1, 9.75), (49, 10.13), (2, 9.79)
 Low Hits: 3, Points: [(62, 9.47), (62, 9.47), (62, 9.47)]
 Distance from Lower Resistance on Last Trade: 0.3466666666666658
 Distance Between High and Low Resistance Points: 0.6600000000000001
+Resistance Levels: [9.776666666666667, 10.153333333333334, 10.506666666666668, 10.883333333333335, 9.423333333333334, 9.046666666666667, 8.693333333333333]
+High Hits: 6, Points: [(0, 9.73), (49, 10.13), (1, 9.75), (49, 10.13), (2, 9.79), (49, 10.13)]
+Low Hits: 3, Points: [(62, 9.47), (62, 9.47), (62, 9.47)]
+Distance from Lower Resistance on Last Trade: 0.3466666666666658
+Distance Between High and Low Resistance Points: 0.6600000000000001
+Resistance Levels: [9.776666666666667, 10.153333333333334, 10.506666666666668, 10.883333333333335, 9.423333333333334, 9.046666666666667, 8.693333333333333]
+High Hits: 6, Points: [(0, 9.73), (49, 10.13), (1, 9.75), (49, 10.13), (2, 9.79), (49, 10.13)]
+Low Hits: 3, Points: [(62, 9.47), (62, 9.47), (62, 9.47)]
+Distance from Lower Resistance on Last Trade: 0.3466666666666658
+Distance Between High and Low Resistance Points: 0.6600000000000001
+Resistance Levels: [9.776666666666667, 10.153333333333334, 10.506666666666668, 10.883333333333335, 9.423333333333334, 9.046666666666667, 8.693333333333333]
+High Hits: 6, Points: [(0, 9.73), (49, 10.13), (1, 9.75), (49, 10.13), (2, 9.79), (49, 10.13)]
+Low Hits: 3, Points: [(62, 9.47), (62, 9.47), (62, 9.47)]
+Distance from Lower Resistance on Last Trade: 0.3466666666666658
+Distance Between High and Low Resistance Points: 0.6600000000000001
+Average Hourly Volume: 10545702.31

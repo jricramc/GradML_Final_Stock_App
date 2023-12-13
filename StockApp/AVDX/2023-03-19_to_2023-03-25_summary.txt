@@ -1,0 +1,11 @@
+Max Variance Day: Agg(open=7.53, high=7.975, low=7.53, close=7.83, volume=2973096.0, vwap=7.8318, timestamp=1679371200000, transactions=23470, otc=None)
+Max Variance : 0.4449999999999994
+Max Range Percentage Day: Agg(open=7.53, high=7.975, low=7.53, close=7.83, volume=2973096.0, vwap=7.8318, timestamp=1679371200000, transactions=23470, otc=None)
+Max Range Percentage: 5.909694555112874
+Weekly Change: 0.66%
+Final Price: 7.59
+Resistance Levels: [7.63, 8.0, 8.41, 8.78, 7.220000000000001, 6.8500000000000005, 6.440000000000001]
+High Hits: 0, Points: []
+Low Hits: 0, Points: []
+Distance from Lower Resistance on Last Trade: 0.3699999999999992
+Distance Between High and Low Resistance Points: None

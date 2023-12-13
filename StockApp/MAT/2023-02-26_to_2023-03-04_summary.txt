@@ -1,0 +1,6 @@
+Max Variance Day: Agg(open=17.6, high=17.93, low=17.5, close=17.89, volume=1795598.0, vwap=17.755, timestamp=1677733200000, transactions=22739, otc=None)
+Max Variance : 0.4299999999999997
+Max Range Percentage Day: Agg(open=17.6, high=17.93, low=17.5, close=17.89, volume=1795598.0, vwap=17.755, timestamp=1677733200000, transactions=22739, otc=None)
+Max Range Percentage: 2.4571428571428555
+Weekly Change: -1.58%
+Final Price: 18.06

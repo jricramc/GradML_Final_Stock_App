@@ -1,28 +1,28 @@
+# # import yfinance as yf
+
 # import yfinance as yf
 
-import yfinance as yf
+# # Define the ticker symbol
+# ticker_symbol = "VLY"
 
-# Define the ticker symbol
-ticker_symbol = "VLY"
+# # Create a Ticker object
+# ticker = yf.Ticker(ticker_symbol)
 
-# Create a Ticker object
-ticker = yf.Ticker(ticker_symbol)
+# print(ticker.info)
 
-print(ticker.info)
+# # Specify the time frame
+# start_date = "2022-01-01"
+# end_date = "2022-03-31"
 
-# Specify the time frame
-start_date = "2022-01-01"
-end_date = "2022-03-31"
+# # Get historical data
+# historical_data = ticker.history(start=start_date, end=end_date)
 
-# Get historical data
-historical_data = ticker.history(start=start_date, end=end_date)
+# # Example calculations
+# average_close_price = historical_data['Close'].mean()
+# total_volume = historical_data['Volume'].sum()
 
-# Example calculations
-average_close_price = historical_data['Close'].mean()
-total_volume = historical_data['Volume'].sum()
-
-print("Average Close Price:", average_close_price)
-print("Total Volume Traded:", total_volume)
+# print("Average Close Price:", average_close_price)
+# print("Total Volume Traded:", total_volume)
 
 
 # Print the historical data
@@ -86,7 +86,7 @@ def fetch_macro_data(stocks):
 
     for stock in stocks:
         os.makedirs(stock, exist_ok=True)
-        marcro_filename = f"{stock}/1-macro_data.txt"
+        marcro_filename = f"{stock}/2022-macro_data.txt"
 
         ticker = yf.Ticker(stock)
 
@@ -103,11 +103,11 @@ def fetch_macro_data(stocks):
         #     print("Net Income data not available")
 
 
-        # employees = ticker.info.get('fullTimeEmployees')
-        # industry = ticker.info.get('industry')
-        # market_cap= ticker.info.get('marketCap')
+        employees = ticker.info.get('fullTimeEmployees')
+        industry = ticker.info.get('industry')
+        market_cap= ticker.info.get('marketCap')
         # two_hundred_day_avg= ticker.info.get('twoHundredDayAverage')
-        # enterprise_value= ticker.info.get('enterpriseValue')
+        enterprise_value= ticker.info.get('enterpriseValue')
         # earnings_quarterly_growth= ticker.info.get('earningsQuarterlyGrowth')
         # revenue_growth= ticker.info.get('revenueGrowth')
 
@@ -125,11 +125,13 @@ def fetch_macro_data(stocks):
         
             # f.write(f"Net Income: {net_income}\n")
 
-            # f.write(f"Employees: {employees}\n")
-            # f.write(f"Industry: {industry}\n")
-            # f.write(f"Market Cap: {market_cap}\n")
+            f.write(f"Employees: {employees}\n")
+            f.write(f"Industry: {industry}\n")
+            f.write(f"Market Cap: {market_cap}\n")
+            f.write(f"Enterprise Value: {enterprise_value}\n")
+            f.write(f"Volume: {volume}\n")
             # f.write(f"200-Day Average: {two_hundred_day_avg}\n")
-            # f.write(f"Enterprise Value: {enterprise_value}\n")
+            
             # f.write(f"Earnings Quarterly Growth: {earnings_quarterly_growth}\n")
             # f.write(f"Revenue Growth: {revenue_growth}\n\n")
 
@@ -138,10 +140,10 @@ def fetch_macro_data(stocks):
             # f.write(f"50-Day Average: {fifty_day_average}\n\n")
             # f.write(f"Earnings Before Interest, Taxes, Depreciation, and Amortization: {ebitda}\n\n")
 
-            f.write(f"Volume: {volume}\n")
+           
 
             # volume
 
 
 
-# fetch_macro_data(stocks)
+fetch_macro_data(stocks)

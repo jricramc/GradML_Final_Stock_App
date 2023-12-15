@@ -12,12 +12,19 @@ Max Range Percentage: 5.83203732503888
 - Distance between high and low points of resistance
 - 
 
-For every company:
-Per quarter: 
-- quarterly earnings
-- market cap percentage change over the past year
-- trade volume per month
-- 
+For every company: 
+- quarterly earnings (finnhub API) https://finnhub.io/docs/api/earnings-calendar
+- market cap percentage change over the past year https://finnhub.io/docs/api/company-profile2
+- trade volume per month (polygon API)
+- company valuation
+- company size (how many employees) (web scraping)
+- industry (web scraping)
+
+
+
+
+
+
 Weekly Change: 9.84%
 Final Price: 14.18
 Resistance Levels: [13.628333333333332, 14.731666666666664, 15.353333333333332, 16.456666666666663, 13.006666666666664, 11.903333333333332, 11.281666666666665]

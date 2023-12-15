@@ -103,11 +103,11 @@ def fetch_macro_data(stocks):
         #     print("Net Income data not available")
 
 
-        employees = ticker.info.get('fullTimeEmployees')
-        industry = ticker.info.get('industry')
-        market_cap= ticker.info.get('marketCap')
+        # employees = ticker.info.get('fullTimeEmployees')
+        # industry = ticker.info.get('industry')
+        # market_cap= ticker.info.get('marketCap')
         # two_hundred_day_avg= ticker.info.get('twoHundredDayAverage')
-        enterprise_value= ticker.info.get('enterpriseValue')
+        # enterprise_value= ticker.info.get('enterpriseValue')
         # earnings_quarterly_growth= ticker.info.get('earningsQuarterlyGrowth')
         # revenue_growth= ticker.info.get('revenueGrowth')
 
@@ -116,20 +116,21 @@ def fetch_macro_data(stocks):
         # fifty_day_average= ticker.info.get('fiftyDayAverage')
         # ebitda= ticker.info.get('ebitda')
 
-        # sector= ticker.info.get('sector')
+        sector= ticker.info.get('sector')
 
-        volume= ticker.info.get('volume')
+        # volume= ticker.info.get('volume')
         
 
         with open(marcro_filename, 'a') as f:
         
             # f.write(f"Net Income: {net_income}\n")
 
-            f.write(f"Employees: {employees}\n")
-            f.write(f"Industry: {industry}\n")
-            f.write(f"Market Cap: {market_cap}\n")
-            f.write(f"Enterprise Value: {enterprise_value}\n")
-            f.write(f"Volume: {volume}\n")
+            # f.write(f"Employees: {employees}\n")
+            # f.write(f"Industry: {industry}\n")
+            # f.write(f"Market Cap: {market_cap}\n")
+            # f.write(f"Enterprise Value: {enterprise_value}\n")
+            # f.write(f"Volume: {volume}\n")
+            f.write(f"Sector: {sector}\n")
             # f.write(f"200-Day Average: {two_hundred_day_avg}\n")
             
             # f.write(f"Earnings Quarterly Growth: {earnings_quarterly_growth}\n")

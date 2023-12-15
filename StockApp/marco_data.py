@@ -111,12 +111,12 @@ def fetch_macro_data(stocks):
         # earnings_quarterly_growth= ticker.info.get('earningsQuarterlyGrowth')
         # revenue_growth= ticker.info.get('revenueGrowth')
 
-        # volatility_beta= ticker.info.get('beta')
+        volatility_beta= ticker.info.get('beta')
         # peg_ratio= ticker.info.get('pegRatio')
         # fifty_day_average= ticker.info.get('fiftyDayAverage')
         # ebitda= ticker.info.get('ebitda')
 
-        sector= ticker.info.get('sector')
+        # sector= ticker.info.get('sector')
 
         # volume= ticker.info.get('volume')
         
@@ -130,13 +130,13 @@ def fetch_macro_data(stocks):
             # f.write(f"Market Cap: {market_cap}\n")
             # f.write(f"Enterprise Value: {enterprise_value}\n")
             # f.write(f"Volume: {volume}\n")
-            f.write(f"Sector: {sector}\n")
+            # f.write(f"Sector: {sector}\n")
             # f.write(f"200-Day Average: {two_hundred_day_avg}\n")
             
             # f.write(f"Earnings Quarterly Growth: {earnings_quarterly_growth}\n")
             # f.write(f"Revenue Growth: {revenue_growth}\n\n")
 
-            # f.write(f"Volatity Beta: {volatility_beta}\n\n")
+            f.write(f"Volatity Beta: {volatility_beta}\n")
             # f.write(f"Price/Earnings to Growth ratio: {volatility_beta}\n\n")
             # f.write(f"50-Day Average: {fifty_day_average}\n\n")
             # f.write(f"Earnings Before Interest, Taxes, Depreciation, and Amortization: {ebitda}\n\n")

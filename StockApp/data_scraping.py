@@ -148,7 +148,7 @@ def fetch_and_save_data(api_key, stocks):
             # Move to the next week
             start_date = week_end_date + datetime.timedelta(days=1)
 
-fetch_and_save_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", ["AAL"])
+# fetch_and_save_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", ["AAL"])
 # Calling the function with an API key
 
 # def fetch_and_save_data(api_key):
@@ -439,6 +439,8 @@ def fetch_quarterly_data(api_key, stocks):
         start_date = datetime.date(2022, 1, 1)
         end_date = datetime.date(2023, 12, 1)
 
+        final_quarter_aggs= []
+
         while start_date < end_date:
             quarter_end_date = start_date + datetime.timedelta(days=90)  # Approximate end of the quarter
             if quarter_end_date > end_date:
@@ -446,49 +448,90 @@ def fetch_quarterly_data(api_key, stocks):
 
             # Fetch quarterly data
             quarterly_aggs = client.list_aggs(ticker=stock, multiplier=1, timespan="quarter", from_=start_date.isoformat(), to=quarter_end_date.isoformat(), limit=5000)
+            quarterly_aggs= list(quarterly_aggs)
 
-            quarterly_aggs = list(quarterly_aggs)
+            while len(final_quarter_aggs)>0 and len(quarterly_aggs) >0 and  final_quarter_aggs[-1] == quarterly_aggs[0]:
+                quarterly_aggs= quarterly_aggs[1:]
+            
+            for agg in quarterly_aggs:
+                final_quarter_aggs.append(agg)
+
+            start_date = quarter_end_date + datetime.timedelta(days=1)
+
+        print(len(final_quarter_aggs))
+
+        counter=1    
+        for quarter in final_quarter_aggs:  
+            # for e in quarterly_aggs:
+            # quarterly_aggs = list(quarterly_aggs)
 
 
             total_volume = 0
-            open_price = close_price = None
+            # open_price = quarterly_aggs.open
+            # close_price = quarterly_aggs.close
 
-            for agg in quarterly_aggs:
-                total_volume += getattr(agg, 'volume', 0)
-                if open_price is None:
-                    open_price = getattr(agg, 'open', None)
-                close_price = getattr(agg, 'close', None)
+            formatted_data = [quarter]
+
+            # open_price= formatted_data[0]['open']
+            # close= formatted_data[0]['close']  
+            # low= formatted_data[0]['low'] 
+            # high= formatted_data[0]['high']
+            # volume= formatted_data[0]['volume']
+
+            open_price= quarter.open
+            close= quarter.close
+            low= quarter.low
+            high= quarter.high
+            volume= quarter.volume
+
+            # stock_variance= E(dist from mean)^2    
+
+            # 16.8515     
+            # print('open', open_price)
+            # print('close', close_price)
+            # print('quarterly',formatted_data)
+
+            # new_list = list(quarter)
+
+            # for agg in new_list:
+            #     total_volume += getattr(agg, 'volume', 0)
+                # if open_price is None:
+                #     open_price = getattr(agg, 'open', None)
+                # close_price = getattr(agg, 'close', None)
 
             # Calculate volume changes
             # first_week_avg_volume = calculate_average_volume(quarterly_aggs, 0, 7)  # First 7 days
             # last_week_avg_volume = calculate_average_volume(quarterly_aggs, -7, len(quarterly_aggs))  # Last 7 days
 
-            first_week_avg_volume = calculate_average_volume(quarterly_aggs, 0, 7)  # First 7 days
-            last_week_avg_volume = calculate_average_volume(quarterly_aggs, -7, len(quarterly_aggs))  # Last 7 days
+            # first_week_avg_volume = calculate_average_volume(new_list, 0, 7)  # First 7 days
+            # last_week_avg_volume = calculate_average_volume(new_list, -7, len(new_list))  # Last 7 days
 
-            volume_change_percentage = calculate_percentage_change(first_week_avg_volume, last_week_avg_volume)
+            # volume_change_percentage = calculate_percentage_change(first_week_avg_volume, last_week_avg_volume)
 
-            if open_price and close_price:
-                percentage_change = calculate_percentage_change(open_price, close_price)
+            if open_price and close:
+                percentage_change = calculate_percentage_change(open_price, close)
+
+            if high and low:
+                max_range = calculate_percentage_change(low, high)
 
             # Get outstanding shares and market cap
             ticker = yf.Ticker(stock)
             outstanding_shares = ticker.info.get('sharesOutstanding', 0)
             beginning_market_cap = open_price * outstanding_shares if open_price else 0
-            end_market_cap = close_price * outstanding_shares if close_price else 0
+            end_market_cap = close * outstanding_shares if close else 0
             market_cap_change_percentage = calculate_percentage_change(beginning_market_cap, end_market_cap)
 
-            # Write to file
-            quarterly_summary_filename = os.path.join(quarterly_data_folder, f"{start_date.isoformat()}_to_{quarter_end_date.isoformat()}_summary.txt")
+
+            quarterly_summary_filename = os.path.join(quarterly_data_folder, f"quarter_{counter}_summary.txt")
             with open(quarterly_summary_filename, 'w') as f:
                 f.write(f"Price Percentage Change: {percentage_change:.2f}%\n")
-                f.write(f"Average Daily Volume: {total_volume / 90}\n")
-                f.write(f"Total Quarter Volume: {total_volume}\n")
+                f.write(f"Max range: {max_range:.2f}%\n")
+                f.write(f"Average Daily Volume: {volume / 90}\n")
+                # f.write(f"Total Quarter Volume: {total_volume}\n")
                 f.write(f"Market Cap Change: {market_cap_change_percentage:.2f}%\n")
-                f.write(f"Volume Change Percentage (First Week vs Last Week): {volume_change_percentage:.2f}%\n")
+                # f.write(f"Volume Change Percentage (First Week vs Last Week): {volume_change_percentage:.2f}%\n")
+            counter+=1
 
-            # Move to the next quarter
-            start_date = quarter_end_date + datetime.timedelta(days=1)
+           
 
-
-# fetch_quarterly_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)
+fetch_quarterly_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)

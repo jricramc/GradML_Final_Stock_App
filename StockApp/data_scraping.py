@@ -121,33 +121,34 @@ stocks= ["AAL", "ABR", "ADT", "AGI", "AGL", "AGNC", "ALIT", "AM", "AMBP", "APLE"
 "TRIP", "UA", "UAA", "UE", "UEC", "UGP", "VFC", "VIPS", "VLY", "VSTS", "VYX", "WEN", "WU", "YMM", "YPF", "ZI"]
 
 
-# def fetch_and_save_data(api_key):
-#     client = RESTClient(api_key)
+def fetch_and_save_data(api_key, stocks):
+    client = RESTClient(api_key)
 
-#     # Create a folder for each stock
-#     for stock in stocks:
-#         os.makedirs(stock, exist_ok=True)
-#         start_date = datetime.date(2023, 1, 1)
-#         end_date = datetime.date(2023, 12, 1)
+    # Create a folder for each stock
+    for stock in stocks:
+        os.makedirs(stock, exist_ok=True)
+        start_date = datetime.date(2023, 1, 1)
+        end_date = datetime.date(2023, 12, 1)
 
-#         # Iterate through weeks
-#         while start_date < end_date:
-#             week_end_date = start_date + datetime.timedelta(days=6)
-#             if week_end_date > end_date:
-#                 week_end_date = end_date
+        # Iterate through weeks
+        while start_date < end_date:
+            week_end_date = start_date + datetime.timedelta(days=6)
+            if week_end_date > end_date:
+                week_end_date = end_date
 
-#             # Fetch data for the week
-#             aggs = client.list_aggs(ticker=stock, multiplier=1, timespan="hour", from_=start_date.isoformat(), to=week_end_date.isoformat(), limit=5000)
+            # Fetch data for the week
+            aggs = client.list_aggs(ticker=stock, multiplier=1, timespan="hour", from_=start_date.isoformat(), to=week_end_date.isoformat(), limit=5000)
 
-#             # Create a filename for the week
-#             filename = f"{stock}/{start_date.isoformat()}_to_{week_end_date.isoformat()}.txt"
-#             save_to_file(aggs, filename)
+            # Create a filename for the week
+            filename = f"{stock}/{start_date.isoformat()}_to_{week_end_date.isoformat()}.txt"
+            save_to_file(aggs, filename)
 
-#             # time.sleep(15)
+            # time.sleep(15)
 
-#             # Move to the next week
-#             start_date = week_end_date + datetime.timedelta(days=1)
+            # Move to the next week
+            start_date = week_end_date + datetime.timedelta(days=1)
 
+fetch_and_save_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", ["AAL"])
 # Calling the function with an API key
 
 # def fetch_and_save_data(api_key):
@@ -490,4 +491,4 @@ def fetch_quarterly_data(api_key, stocks):
             start_date = quarter_end_date + datetime.timedelta(days=1)
 
 
-fetch_quarterly_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)
+# fetch_quarterly_data("c6T0CxJSsS12geETIbr15rl_5X61otI3", stocks)
